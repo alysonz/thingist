@@ -1,8 +1,8 @@
 const Hidden = (props) => {
-  if (props.hidden) {
-    return '';
+  if (props.show) {
+    return props.children;
   }
-  return props.children;
+  return '';
 };
 
 export default Hidden;

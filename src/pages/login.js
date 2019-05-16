@@ -6,8 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import styles from '../lib/styles';
 import { login } from '../state/auth';
-import TextField from '../components/text-field';
-import Button from '../components/button';
+import LoginForm from '../components/login';
 
 class Login extends Component {
   constructor(props, context) {
@@ -20,7 +19,16 @@ class Login extends Component {
 
     this.handleUsername = this.handleChange.bind(this, 'username');
     this.handlePassword = this.handleChange.bind(this, 'password');
+    this.handleForm = this.handleForm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(key, e) {
+    this.setState({ [key]: e.target.value });
+  }
+
+  handleForm(form) {
+    this.setState({ form });
   }
 
   handleSubmit() {
@@ -28,39 +36,26 @@ class Login extends Component {
     this.setState({ password: '' });
   }
 
-  handleChange(key, e) {
-    this.setState({ [key]: e.target.value });
-  }
-
   render() {
     const { username, password, form } = this.state;
     const { classes } = this.props;
+    const forms = {
+      login: (
+        <LoginForm
+          username={username}
+          password={password}
+          handleUsername={this.handleUsername}
+          handlePassword={this.handlePassword}
+          handleForm={this.handleForm}
+          handleSubmit={this.handleSubmit}
+        />
+      ),
+    };
 
     return (
       <div className={classes.login}>
         <div className={classes.headline}>Thingist</div>
-        <TextField
-          label="Username"
-          InputProps={{
-            style: { fontSize: '1.5rem' },
-            disableUnderline: true,
-            inputProps: { style: { textIndent: '.5rem' } },
-          }}
-          value={username}
-          onChange={this.handleUsername}
-        />
-        <TextField
-          label="Password"
-          InputProps={{
-            style: { fontSize: '1.5rem' },
-            disableUnderline: true,
-            inputProps: { style: { textIndent: '.5rem' } },
-          }}
-          type="password"
-          value={password}
-          onChange={this.handlePassword}
-        />
-        <Button onClick={this.handleSubmit}>Sign In</Button>
+        {forms[form]}
       </div>
     );
   }

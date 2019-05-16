@@ -1,0 +1,45 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": "airbnb",
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser":  "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "consistent-return": [0, { "treatUndefinedAsUnspecified": true }],
+    "no-extraneous-dependencies": "off",
+    "no-plusplus": "off",
+    "no-param-reassign": "off",
+    "no-shadow": "off",
+    "camelcase": "off",
+    "prefer-template": "off",
+    "arrow-body-style": "off",
+    "import/no-named-as-default": "off",
+    "comma-dangle": 1,
+    "max-len": "off",
+    "import/prefer-default-export": 0,
+    "react/jsx-boolean-value": 0,
+    "react/jsx-filename-extension": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 2,
+    "react/forbid-prop-types": 0,
+    "react/prefer-stateless-function": "off",
+    "react/destructuring-assignment": "off",
+    "no-restricted-globals": "off",
+    "object-curly-newline": "off",
+    "jsx-a11y/anchor-is-valid": ["error", {
+        "components": ["Link"],
+        "specialLink": ["to"]
+    }],
+    "no-underscore-dangle": "off",
+    "react/no-string-refs": "off"
+  }
+}
